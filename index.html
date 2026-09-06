@@ -1,0 +1,2042 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#12000b">
+<title>For Aary ❤️</title>
+
+<style>
+/* =========================================================
+   AARY — LOVE WEBSITE
+   Everything is contained in this single HTML file.
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root {
+    --bg: #090108;
+    --bg2: #18030d;
+    --pink: #ff4f91;
+    --rose: #ff86b5;
+    --red: #ff315f;
+    --soft: #ffd5e5;
+    --white: #fff7fb;
+    --muted: #cdaebd;
+    --glass: rgba(255,255,255,0.07);
+    --border: rgba(255,255,255,0.13);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background:
+        radial-gradient(circle at 50% 0%, #3a071d 0%, transparent 38%),
+        linear-gradient(180deg, var(--bg), #12020a 55%, #050105);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+body.locked {
+    overflow: hidden;
+}
+
+/* ---------- Loading / Opening ---------- */
+
+#opening {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background:
+        radial-gradient(circle at center, #3a071d 0%, #15030c 40%, #050105 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: opacity 1.2s ease, visibility 1.2s ease;
+}
+
+#opening.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.opening-content {
+    width: min(90%, 650px);
+    position: relative;
+}
+
+.small-intro {
+    color: var(--rose);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-size: 11px;
+    margin-bottom: 20px;
+    animation: fadeUp 1.5s ease forwards;
+}
+
+.opening-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(70px, 16vw, 145px);
+    font-weight: 400;
+    line-height: .85;
+    color: #fff;
+    text-shadow:
+        0 0 20px rgba(255,79,145,.5),
+        0 0 60px rgba(255,49,95,.35);
+    animation: titleGlow 3s infinite alternate;
+}
+
+.opening-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 4vw, 30px);
+    color: var(--soft);
+    margin-top: 22px;
+    letter-spacing: 2px;
+}
+
+.opening-message {
+    margin: 25px auto 35px;
+    max-width: 500px;
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+.open-btn {
+    border: 1px solid rgba(255,134,181,.6);
+    background: linear-gradient(135deg, #ff315f, #c2185b);
+    color: white;
+    padding: 16px 35px;
+    border-radius: 100px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 10px 40px rgba(255,49,95,.3);
+    transition: .3s ease;
+}
+
+.open-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 15px 50px rgba(255,49,95,.5);
+}
+
+.open-heart {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 25px;
+    position: relative;
+    animation: heartbeat 1.3s infinite;
+}
+
+.open-heart::before,
+.open-heart::after {
+    content: "";
+    position: absolute;
+    width: 55px;
+    height: 85px;
+    background: linear-gradient(135deg, #ff4f91, #ff1744);
+    border-radius: 55px 55px 0 0;
+    top: 10px;
+}
+
+.open-heart::before {
+    left: 47px;
+    transform: rotate(45deg);
+    transform-origin: 0 100%;
+}
+
+.open-heart::after {
+    left: 0;
+    transform: rotate(-45deg);
+    transform-origin: 100% 100%;
+}
+
+/* ---------- Floating Hearts ---------- */
+
+#hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    bottom: -50px;
+    color: rgba(255, 94, 145, .55);
+    animation: floatHeart linear forwards;
+    user-select: none;
+}
+
+/* ---------- Main ---------- */
+
+main {
+    position: relative;
+    z-index: 2;
+}
+
+section {
+    padding: 110px 20px;
+    position: relative;
+}
+
+.container {
+    width: min(1100px, 92%);
+    margin: auto;
+}
+
+.section-label {
+    color: var(--pink);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 10px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    text-align: center;
+    font-size: clamp(40px, 7vw, 70px);
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 25px;
+}
+
+.section-description {
+    max-width: 650px;
+    margin: 0 auto 50px;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.9;
+    font-size: 14px;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background:
+        radial-gradient(circle at center, rgba(255,49,95,.15), transparent 35%);
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.hero-small {
+    color: var(--rose);
+    text-transform: uppercase;
+    letter-spacing: 7px;
+    font-size: 11px;
+    margin-bottom: 20px;
+}
+
+.hero-name {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(90px, 18vw, 180px);
+    font-weight: 400;
+    line-height: .8;
+    text-shadow: 0 0 45px rgba(255,79,145,.35);
+}
+
+.hero-love {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 4vw, 34px);
+    color: var(--soft);
+    margin-top: 30px;
+}
+
+.scroll-hint {
+    margin-top: 60px;
+    color: #9d7184;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.scroll-hint span {
+    display: block;
+    margin-top: 12px;
+    font-size: 20px;
+    animation: bounce 1.5s infinite;
+}
+
+/* ---------- Big Heart ---------- */
+
+.heart-section {
+    text-align: center;
+}
+
+/* ---------- PERFECT HEART ---------- */
+
+.big-heart {
+    width: 220px;
+    height: 200px;
+    margin: 55px auto;
+    position: relative;
+
+    /* One single heart shape */
+    background: linear-gradient(
+        135deg,
+        #ff9ac1 0%,
+        #ff4f91 45%,
+        #ff1744 100%
+    );
+
+    clip-path: polygon(
+        50% 100%,
+        0% 38%,
+        0% 25%,
+        3% 14%,
+        10% 6%,
+        20% 2%,
+        30% 3%,
+        40% 9%,
+        50% 20%,
+        60% 9%,
+        70% 3%,
+        80% 2%,
+        90% 6%,
+        97% 14%,
+        100% 25%,
+        100% 38%
+    );
+
+    filter:
+        drop-shadow(0 0 15px rgba(255, 49, 95, .55))
+        drop-shadow(0 0 35px rgba(255, 49, 95, .35));
+
+    animation: perfectHeartbeat 1.8s infinite ease-in-out;
+}
+
+
+/* Heart animation */
+@keyframes perfectHeartbeat {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    10% {
+        transform: scale(1.08);
+    }
+
+    20% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.05);
+    }
+
+    45%, 100% {
+        transform: scale(1);
+    }
+}
+
+/* ---------- Shayari ---------- */
+
+.shayari-box {
+    max-width: 800px;
+    margin: auto;
+    padding: 55px 35px;
+    border: 1px solid var(--border);
+    background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
+    backdrop-filter: blur(15px);
+    border-radius: 30px;
+    text-align: center;
+    position: relative;
+}
+
+.quote {
+    color: var(--pink);
+    font-size: 55px;
+    line-height: .5;
+    font-family: Georgia, serif;
+}
+
+.shayari {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(23px, 4vw, 34px);
+    line-height: 1.65;
+    color: #fff1f7;
+    margin: 30px 0;
+}
+
+.shayari-sign {
+    color: var(--rose);
+    font-family: 'Great Vibes', cursive;
+    font-size: 30px;
+}
+
+/* ---------- Photos ---------- */
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.photo-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 22px;
+    aspect-ratio: 4 / 5;
+    background:
+        linear-gradient(145deg, #250715, #0e0208);
+    border: 1px solid var(--border);
+}
+
+.photo-card.large {
+    grid-row: span 2;
+    aspect-ratio: auto;
+}
+
+.photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .7s ease;
+}
+
+.photo-card:hover img {
+    transform: scale(1.08);
+}
+
+.photo-overlay {
+    position: absolute;
+    inset: auto 0 0;
+    padding: 35px 20px 20px;
+    background: linear-gradient(transparent, rgba(0,0,0,.8));
+}
+
+.photo-overlay h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px;
+}
+
+.photo-overlay p {
+    color: #d7b6c5;
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+/* ---------- Timeline ---------- */
+
+.timeline {
+    max-width: 800px;
+    margin: 60px auto 0;
+    position: relative;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(transparent, var(--pink), transparent);
+}
+
+.timeline-item {
+    width: 50%;
+    padding: 0 40px 60px;
+    position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    margin-left: 50%;
+}
+
+.timeline-dot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--pink);
+    position: absolute;
+    top: 4px;
+    box-shadow: 0 0 20px var(--pink);
+}
+
+.timeline-item:nth-child(odd) .timeline-dot {
+    right: -6px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    left: -6px;
+}
+
+.timeline-date {
+    color: var(--pink);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.timeline-item h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    margin: 10px 0;
+}
+
+.timeline-item p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* ---------- Song ---------- */
+
+.song-card {
+    max-width: 650px;
+    margin: auto;
+    padding: 35px;
+    border-radius: 30px;
+    background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.025));
+    border: 1px solid var(--border);
+    text-align: center;
+}
+
+.album {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 25px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, #fff 0 5%, #ff6da5 6% 10%, #8c123e 11% 100%);
+    box-shadow: 0 0 50px rgba(255,79,145,.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 55px;
+}
+
+.song-card.playing .album {
+    animation: spin 5s linear infinite;
+}
+
+.song-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+}
+
+.song-subtitle {
+    color: var(--muted);
+    font-size: 12px;
+    margin: 5px 0 25px;
+}
+
+audio {
+    width: 100%;
+    height: 45px;
+}
+
+
+/* =====================================================
+   HEARTS OUTSIDE PLAYER
+   ===================================================== */
+
+
+/* LEFT HEART */
+
+.side-heart {
+
+    position: absolute;
+
+    z-index: 4;
+
+    pointer-events: none;
+
+    width: 95px;
+
+    height: 95px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffb0ce 0%,
+            #ff4f91 45%,
+            #ff1744 100%
+        );
+
+    transform: rotate(-45deg);
+
+    filter:
+        drop-shadow(
+            0 0 15px rgba(255,50,120,.7)
+        )
+        drop-shadow(
+            0 0 35px rgba(255,50,120,.4)
+        );
+
+    animation:
+        heartBeat 2s ease-in-out infinite;
+}
+
+
+/* Heart circles */
+
+.side-heart::before,
+.side-heart::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 95px;
+    height: 95px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffb0ce 0%,
+            #ff4f91 45%,
+            #ff1744 100%
+        );
+
+    border-radius: 50%;
+}
+
+
+/* Top circle */
+
+.side-heart::before {
+
+    top: -48px;
+
+    left: 0;
+}
+
+
+/* Right circle */
+
+.side-heart::after {
+
+    top: 0;
+
+    left: 48px;
+}
+
+
+/* Left position */
+
+.heart-left {
+
+    left: 5px;
+
+    top: 25px;
+}
+
+
+/* Right position */
+
+.heart-right {
+
+    right: 5px;
+
+    bottom: 25px;
+
+    animation-delay: .5s;
+}
+
+
+/* =====================================================
+   SMALL FLOATING HEARTS
+   ===================================================== */
+
+.mini-heart {
+
+    position: absolute;
+
+    color: #ff6fa5;
+
+    font-size: 22px;
+
+    z-index: 5;
+
+    pointer-events: none;
+
+    animation: floatingHeart 4s ease-in-out infinite;
+}
+
+
+.mini-1 {
+
+    left: 12%;
+
+    top: 15%;
+
+    animation-delay: .2s;
+}
+
+
+.mini-2 {
+
+    right: 13%;
+
+    top: 20%;
+
+    animation-delay: 1s;
+}
+
+
+.mini-3 {
+
+    left: 15%;
+
+    bottom: 12%;
+
+    animation-delay: 1.5s;
+}
+
+
+.mini-4 {
+
+    right: 15%;
+
+    bottom: 13%;
+
+    animation-delay: .7s;
+}
+
+
+/* =====================================================
+   SONG INFORMATION
+   ===================================================== */
+
+.song-info {
+
+    margin-top: 45px;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+
+.song-name {
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(30px, 5vw, 45px);
+
+    margin-bottom: 8px;
+}
+
+
+.song-artist {
+
+    color: #bd9aaa;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+
+/* =====================================================
+   CUSTOM HEART BUTTON
+   ===================================================== */
+
+.play-love-button {
+
+    margin-top: 30px;
+
+    border: 1px solid rgba(255,130,173,.5);
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff315f,
+            #c2185b
+        );
+
+    color: white;
+
+    padding: 14px 30px;
+
+    border-radius: 50px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    letter-spacing: 1px;
+
+    box-shadow:
+        0 10px 35px rgba(255,50,120,.25);
+
+    transition: .3s ease;
+}
+
+
+.play-love-button:hover {
+
+    transform: translateY(-3px) scale(1.03);
+
+    box-shadow:
+        0 15px 45px rgba(255,50,120,.45);
+}
+
+
+/* =====================================================
+   ANIMATIONS
+   ===================================================== */
+
+@keyframes heartBeat {
+
+    0%,
+    100% {
+
+        transform:
+            rotate(-45deg)
+            scale(1);
+    }
+
+    15% {
+
+        transform:
+            rotate(-45deg)
+            scale(1.13);
+    }
+
+    30% {
+
+        transform:
+            rotate(-45deg)
+            scale(1);
+    }
+
+    45% {
+
+        transform:
+            rotate(-45deg)
+            scale(1.07);
+    }
+
+    60% {
+
+        transform:
+            rotate(-45deg)
+            scale(1);
+    }
+}
+
+
+@keyframes floatingHeart {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        opacity: .5;
+    }
+
+    50% {
+
+        transform:
+            translateY(-20px)
+            scale(1.2);
+
+        opacity: 1;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 700px) {
+
+    .song-section {
+
+        padding: 70px 12px;
+    }
+
+
+    .music-stage {
+
+        padding: 60px 25px;
+    }
+
+
+    .youtube-wrapper {
+
+        border-radius: 16px;
+    }
+
+
+    .side-heart {
+
+        width: 55px;
+
+        height: 55px;
+    }
+
+
+    .side-heart::before,
+    .side-heart::after {
+
+        width: 55px;
+
+        height: 55px;
+    }
+
+
+    .side-heart::before {
+
+        top: -28px;
+    }
+
+
+    .side-heart::after {
+
+        left: 28px;
+    }
+
+
+    .heart-left {
+
+        left: -5px;
+
+        top: 20px;
+    }
+
+
+    .heart-right {
+
+        right: -5px;
+
+        bottom: 20px;
+    }
+
+
+    .mini-heart {
+
+        font-size: 16px;
+    }
+}
+/* ---------- Letter ---------- */
+
+.letter {
+    max-width: 800px;
+    margin: auto;
+    padding: 55px clamp(25px, 7vw, 70px);
+    background:
+        linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025));
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    box-shadow: 0 30px 100px rgba(0,0,0,.25);
+}
+
+.letter h3 {
+    font-family: 'Great Vibes', cursive;
+    font-weight: 400;
+    font-size: 50px;
+    color: var(--rose);
+    margin-bottom: 25px;
+}
+
+.letter p {
+    color: #e7ceda;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+.signature {
+    text-align: right;
+    color: var(--pink);
+    font-family: 'Great Vibes', cursive;
+    font-size: 36px;
+    margin-top: 30px;
+}
+
+/* ---------- Final ---------- */
+
+.final-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.final-content {
+    width: 100%;
+}
+
+.final-heart {
+    font-size: 90px;
+    display: inline-block;
+    animation: heartbeat 1.5s infinite;
+    filter: drop-shadow(0 0 25px rgba(255,49,95,.6));
+}
+
+.final-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(65px, 13vw, 125px);
+    font-weight: 400;
+    margin-top: 20px;
+}
+
+.final-text {
+    max-width: 650px;
+    margin: 25px auto;
+    color: var(--muted);
+    line-height: 1.9;
+}
+
+.forever {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px;
+    color: var(--soft);
+    margin-top: 40px;
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+    text-align: center;
+    padding: 30px 20px 50px;
+    color: #704c5b;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+/* ---------- Reveal ---------- */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(45px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ---------- Animations ---------- */
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes titleGlow {
+    from { text-shadow: 0 0 20px rgba(255,79,145,.35); }
+    to { text-shadow: 0 0 50px rgba(255,79,145,.7); }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.15); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.1); }
+    60% { transform: scale(1); }
+}
+
+@keyframes bigHeartbeat {
+    0%, 100% { transform: rotate(-45deg) scale(1); }
+    15% { transform: rotate(-45deg) scale(1.08); }
+    30% { transform: rotate(-45deg) scale(1); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(.7);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: .7; }
+    100% {
+        transform: translateY(-110vh) rotate(360deg) scale(1.2);
+        opacity: 0;
+    }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 700px) {
+
+    section {
+        padding: 80px 15px;
+    }
+
+    .photo-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .photo-card.large {
+        grid-row: span 1;
+        aspect-ratio: 4 / 5;
+    }
+
+    .timeline::before {
+        left: 10px;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(even) {
+        width: 100%;
+        margin-left: 0;
+        padding-left: 40px;
+        padding-right: 10px;
+        text-align: left;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: 4px;
+        right: auto;
+    }
+
+    .letter {
+        padding: 40px 25px;
+    }
+
+    .letter p {
+        font-size: 19px;
+    }
+
+    .album {
+        width: 145px;
+        height: 145px;
+    }
+}
+</style>
+</head>
+
+<body class="locked">
+
+<!-- ========================================================
+     OPENING SCREEN
+     ======================================================== -->
+
+<div id="opening">
+
+    <div class="opening-content">
+
+          <div class="final-heart">
+            ❤️
+        </div>
+<br>
+        <div class="small-intro">
+            A little surprise for
+        </div>
+<br>
+        <div class="opening-title">
+            Shailendra
+        </div>
+
+        <div class="opening-subtitle">
+            My favourite person ❤️
+        </div>
+
+        <div class="opening-message">
+            I could have written you a message...
+            but I wanted to create a whole little world
+            for you instead.
+        </div>
+
+        <button class="open-btn" onclick="openLove()">
+            Open My Heart ❤️
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- Floating hearts -->
+<div id="hearts"></div>
+
+
+<main>
+
+<!-- ========================================================
+     HERO
+     ======================================================== -->
+
+<section class="hero">
+
+    <div class="hero-content reveal">
+
+        <div class="hero-small">
+            This little website is only for
+        </div>
+<br>
+        <h1 class="hero-name">
+            Shailu
+        </h1>
+
+        <div class="hero-love">
+            Shailendra, you are my beautiful favourite chapter. ❤️
+        </div>
+
+        <div class="scroll-hint">
+            Keep scrolling
+            <span>↓</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================
+     HEART
+     ======================================================== -->
+
+<section class="heart-section">
+
+    <div class="container reveal">
+
+        <div class="section-label">
+            One simple truth
+        </div>
+
+        <h2 class="section-title">
+            You have my heart.
+        </h2>
+
+          <div class="final-heart">
+            ❤️
+        </div>
+
+        <p class="section-description">
+            Out of all the people in this huge world,
+            somehow my heart found you.
+            And honestly... I would choose you again.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================
+     SHAYARI
+     ======================================================== -->
+
+<section>
+
+    <div class="container reveal">
+
+        <div class="section-label">
+            For you
+        </div>
+
+        <h2 class="section-title">
+            Kuch dil ki baatein...
+        </h2>
+
+        <div class="shayari-box">
+
+            <div class="quote">“</div>
+
+            <div class="shayari">
+                Tum mile toh laga,<br>
+                jaise kisi dua ka jawab mil gaya...<br><br>
+
+                Tumhari muskurahat mein kuch toh baat hai,<br>
+                jo mere har udaas pal ko<br>
+                khamoshi se theek kar deti hai...<br><br>
+
+                Tum sirf meri zindagi ka hissa nahi,<br>
+                tum woh khoobsurat wajah ho<br>
+                jiske bina meri kahani adhuri si lagti hai. ❤️
+            </div>
+
+            <div class="shayari-sign">
+                — For my Aary
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================
+     OUR MEMORIES / PHOTOS
+     ======================================================== -->
+
+<section>
+
+    <div class="container reveal">
+
+        <div class="section-label">
+            Our little world
+        </div>
+
+        <h2 class="section-title">
+            Our Memories
+        </h2>
+
+        <p class="section-description">
+            Replace these pictures with your favourite memories.
+            Every picture deserves its own little story.
+        </p>
+
+        <div class="photo-grid">
+
+            <!-- Replace photo1.jpg with your own image -->
+            <div class="photo-card large">
+                <img src="images/1st.jpg"
+                     alt="Our first memory"
+                     onerror="this.style.display='none'">
+
+                <div class="photo-overlay">
+                    <h3>That moment ❤️</h3>
+                    <p>A memory I never want to forget.</p>
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <img src="images/2nd.jpg"
+                     alt="Our memory"
+                     onerror="this.style.display='none'">
+
+                <div class="photo-overlay">
+                    <h3>You & Me</h3>
+                    <p>Just us.</p>
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <img src="images/3rd.jpg"
+                     alt="Our memory"
+                     onerror="this.style.display='none'">
+
+                <div class="photo-overlay">
+                    <h3>That smile</h3>
+                    <p>My favourite view.</p>
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <img src="images/4rth.jpg"
+                     alt="Our memory"
+                     onerror="this.style.display='none'">
+
+                <div class="photo-overlay">
+                    <h3>Another chapter</h3>
+                    <p>Another beautiful memory.</p>
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <img src="images/5th.jpg"
+                     alt="Our memory"
+                     onerror="this.style.display='none'">
+
+                <div class="photo-overlay">
+                    <h3>Always us</h3>
+                    <p>And hopefully many more.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================
+     OUR STORY
+     ======================================================== -->
+
+<section>
+
+    <div class="container reveal">
+
+        <div class="section-label">
+            Our story
+        </div>
+
+        <h2 class="section-title">
+            Little moments.
+        </h2>
+
+        <p class="section-description">
+            You can change these moments to match your real story.
+        </p>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">The beginning</div>
+                <h3>When we met</h3>
+                <p>
+                    Somewhere between an ordinary day
+                    and an unexpected moment,
+                    our story quietly began.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">Then</div>
+                <h3>We became us</h3>
+                <p>
+                    Slowly, conversations became memories,
+                    and memories became something
+                    I never wanted to lose.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">Today</div>
+                <h3>You are here</h3>
+                <p>
+                    And somehow, you still manage to make
+                    normal days feel a little more special.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">Tomorrow</div>
+                <h3>More memories</h3>
+                <p>
+                    More laughter. More adventures.
+                    More photographs.
+                    More us.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================================================
+     OUR SONG
+     ======================================================== -->
+
+<section>
+
+    <div class="container reveal">
+
+        <div class="section-label">
+            Press play
+        </div>
+
+        <h2 class="section-title">
+            Our Song 🎵
+        </h2>
+
+        <p class="section-description">
+            Add the song that reminds you of Aary.
+        </p>
+
+        <div class="song-card" id="songCard">
+
+            <div class="album">
+                ❤️
+            </div>
+
+            <div class="song-title">
+                Our Song
+            </div>
+
+            <div class="song-subtitle">
+                A song that belongs to us
+            </div>
+
+            <!--
+                Put your audio file here:
+                music/oursong.mp3
+            -->
+
+            <audio id="loveSong" controls>
+                <source src="C:\Users\user\My Love\Song\Tumsehi.mp3">
+                Your browser does not support audio.
+            </audio>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================
+     LOVE LETTER
+     ======================================================== -->
+
+<section>
+
+    <div class="container reveal">
+
+        <div class="section-label">
+            A letter for you
+        </div>
+
+        <h2 class="section-title">
+            Dear Aary...
+        </h2>
+
+        <div class="letter">
+
+            <h3>My Shailendra,</h3>
+
+            <p>
+                I don't know if a webpage can really explain
+                what someone means to you, but I wanted to try.
+            </p>
+
+            <p>
+                You have become one of those beautiful parts
+                of my life that I don't want to imagine
+                living without.
+            </p>
+
+            <p>
+                Thank you for the smiles, the conversations,
+                the silly moments, the memories and even
+                the little things that you probably don't
+                realise I remember.
+            </p>
+
+            <p>
+                If I could make one wish for our story,
+                it would simply be this:
+                <br><br>
+                <strong>
+                    May we always find our way back to each other.
+                </strong>
+            </p>
+
+            <p>
+                And whenever life gets busy,
+                whenever days become difficult,
+                I hope you remember that somewhere in this
+                huge world, there is a heart that chose you.
+            </p>
+
+            <div class="signature">
+                Always yours ❤️
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================
+     FINAL SURPRISE
+     ======================================================== -->
+
+<section class="final-section">
+
+    <div class="final-content container reveal">
+
+        <div class="final-heart">
+            ❤️
+        </div>
+
+        <div class="section-label">
+            And finally...
+        </div>
+<br>
+        <h2 class="final-title">
+            I choose you.
+        </h2>
+
+        <p class="final-text">
+            Not just for the beautiful days.
+            Not just for the photographs.
+            Not just for the easy moments.
+
+            <br><br>
+
+            I choose you for the ordinary days,
+            the crazy days,
+            the quiet days,
+            and all the beautiful days still waiting for us.
+
+        </p>
+
+        <div class="forever">
+            Shailendra + Diksha
+            <br>
+            Forever & Always ❤️
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+    Made with love, only for Aary ❤️
+</footer>
+
+
+<script>
+
+/* =========================================================
+   OPENING SCREEN
+   ========================================================= */
+
+function openLove() {
+
+    const opening = document.getElementById("opening");
+
+    opening.classList.add("hidden");
+
+    document.body.classList.remove("locked");
+
+    // Start creating hearts
+    startHearts();
+
+    // Scroll to beginning of page
+    setTimeout(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }, 300);
+}
+
+
+/* =========================================================
+   FLOATING HEARTS
+   ========================================================= */
+
+const heartContainer = document.getElementById("hearts");
+
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "floating-heart";
+
+    const hearts = ["❤️", "♥", "♡", "💕", "💗", "💖"];
+
+    heart.innerHTML =
+        hearts[Math.floor(Math.random() * hearts.length)];
+
+    heart.style.left = Math.random() * 100 + "%";
+
+    heart.style.fontSize =
+        (10 + Math.random() * 22) + "px";
+
+    heart.style.animationDuration =
+        (7 + Math.random() * 9) + "s";
+
+    heart.style.animationDelay =
+        Math.random() * 2 + "s";
+
+    heartContainer.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 18000);
+}
+
+function startHearts() {
+
+    // Initial hearts
+    for (let i = 0; i < 12; i++) {
+        setTimeout(createHeart, i * 250);
+    }
+
+    // Continuous hearts
+    setInterval(createHeart, 900);
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+   ========================================================= */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("visible");
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+revealElements.forEach(element => {
+    observer.observe(element);
+});
+
+
+/* =========================================================
+   MUSIC PLAYER
+   ========================================================= */
+
+const song =
+    document.getElementById("loveSong");
+
+const songCard =
+    document.getElementById("songCard");
+
+song.addEventListener("play", () => {
+    songCard.classList.add("playing");
+});
+
+song.addEventListener("pause", () => {
+    songCard.classList.remove("playing");
+});
+
+song.addEventListener("ended", () => {
+    songCard.classList.remove("playing");
+});
+
+
+/* =========================================================
+   CLICK HEART EFFECT
+   ========================================================= */
+
+document.addEventListener("click", function(e) {
+
+    if (
+        e.target.tagName === "BUTTON" ||
+        e.target.closest("audio")
+    ) {
+        return;
+    }
+
+    const heart = document.createElement("div");
+
+    heart.innerHTML = "❤️";
+
+    heart.style.position = "fixed";
+    heart.style.left = e.clientX + "px";
+    heart.style.top = e.clientY + "px";
+    heart.style.zIndex = "10000";
+    heart.style.pointerEvents = "none";
+    heart.style.fontSize = "20px";
+    heart.style.transform = "translate(-50%, -50%)";
+
+    heart.animate(
+        [
+            {
+                transform:
+                    "translate(-50%, -50%) scale(.5)",
+                opacity: 1
+            },
+            {
+                transform:
+                    "translate(-50%, -130px) scale(1.5)",
+                opacity: 0
+            }
+        ],
+        {
+            duration: 1000,
+            easing: "ease-out"
+        }
+    );
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 1000);
+
+});
+
+
+/* =========================================================
+   OPTIONAL: ADD YOUR OWN DATE
+   =========================================================
+
+   Example:
+
+   const specialDate = "14 February 2026";
+
+   You can later add a date counter if you want.
+   ========================================================= */
+let youtubePlayer;
+
+
+/*
+   Load YouTube's iframe API
+*/
+
+const youtubeScript =
+    document.createElement("script");
+
+youtubeScript.src =
+    "https://www.youtube.com/iframe_api";
+
+document.head.appendChild(youtubeScript);
+
+
+
+/*
+   YouTube calls this automatically
+   after the API has loaded.
+*/
+
+function onYouTubeIframeAPIReady() {
+
+    youtubePlayer =
+        new YT.Player(
+            "youtubePlayer",
+            {
+                events: {
+
+                    "onReady":
+                        onPlayerReady
+
+                }
+            }
+        );
+}
+
+
+/*
+   Player ready
+*/
+
+function onPlayerReady(event) {
+
+    console.log(
+        "Tum Se Hi player is ready ❤️"
+    );
+}
+
+
+/* =====================================================
+   PLAY SONG
+   ===================================================== */
+
+function playOurSong() {
+
+    if (
+        youtubePlayer &&
+        typeof youtubePlayer.playVideo === "function"
+    ) {
+
+        youtubePlayer.playVideo();
+
+    } else {
+
+        /*
+           If the API is still loading,
+           scroll to the player so the user
+           can tap YouTube's play button.
+        */
+
+        document
+            .getElementById("youtubePlayer")
+            .scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+    }
+
+}
+
+
+/* =====================================================
+   EXTRA HEART EFFECT WHEN PLAY BUTTON IS CLICKED
+   ===================================================== */
+
+document
+    .querySelector(".play-love-button")
+    .addEventListener("click", function() {
+
+        createBurstHearts();
+
+    });
+
+
+function createBurstHearts() {
+
+    const symbols = [
+        "❤️",
+        "💗",
+        "💕",
+        "♥",
+        "♡"
+    ];
+
+
+    for (
+        let i = 0;
+        i < 12;
+        i++
+    ) {
+
+        const heart =
+            document.createElement("div");
+
+
+        heart.innerHTML =
+            symbols[
+                Math.floor(
+                    Math.random() *
+                    symbols.length
+                )
+            ];
+
+
+        heart.style.position =
+            "fixed";
+
+        heart.style.left =
+            "50%";
+
+        heart.style.top =
+            "50%";
+
+        heart.style.zIndex =
+            "9999";
+
+        heart.style.pointerEvents =
+            "none";
+
+        heart.style.fontSize =
+            (15 + Math.random() * 20)
+            + "px";
+
+
+        const angle =
+            Math.random() *
+            Math.PI *
+            2;
+
+
+        const distance =
+            100 +
+            Math.random() *
+            220;
+
+
+        const x =
+            Math.cos(angle) *
+            distance;
+
+
+        const y =
+            Math.sin(angle) *
+            distance;
+
+
+        heart.animate(
+
+            [
+
+                {
+                    transform:
+                        "translate(-50%, -50%) scale(.3)",
+                    opacity: 1
+                },
+
+                {
+                    transform:
+                        `translate(
+                            calc(-50% + ${x}px),
+                            calc(-50% + ${y}px)
+                        )
+                        scale(1.4)`,
+
+                    opacity: 0
+                }
+
+            ],
+
+            {
+                duration:
+                    1200 +
+                    Math.random() * 600,
+
+                easing:
+                    "cubic-bezier(.17,.67,.3,1)"
+            }
+
+        );
+
+
+        document.body
+            .appendChild(heart);
+
+
+        setTimeout(
+            () => heart.remove(),
+            2000
+        );
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+```
